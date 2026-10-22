@@ -1,0 +1,31 @@
+{
+  "equipment_name": "BIOPROX 3 Protein Bar - Chocolate Dubai",
+  "brand": "BIOPROX",
+  "model_number": "3 Protein Bar - Chocolate Dubai",
+  "category": "Nutrición & Suplementación Deportiva",
+  "specifications": {
+    "Tipo de Producto": "Barrita de Proteínas / Suplemento Dietético",
+    "Aporte Proteico": "Alto contenido proteico (Aislado/Concentrado lácteo)",
+    "Sabor / Variedad": "Chocolate / Variedad comercial especificada",
+    "Condiciones de Conservación": "Conservar en lugar fresco y seco (15°C - 22°C), protegido de luz directa",
+    "Momento Óptimo de Consumo": "Snack entre comidas, pre-entreno o post-entreno inmediato"
+  },
+  "safety_warnings": [
+    "Alérgenos: Puede contener leche, soja, gluten y trazas de frutos de cáscara.",
+    "Un consumo excesivo de edulcorantes/polialcoholes puede tener efectos laxantes.",
+    "Los suplementos alimenticios no deben utilizarse como sustitutos de una dieta variada y equilibrada."
+  ],
+  "quick_start_steps": [
+    "1. Comprobar que el envoltorio hermético protector se encuentre sin fisuras.",
+    "2. Consumir preferentemente antes de la fecha y lote impresos en el envase.",
+    "3. Mantener a temperatura ambiente templada para preservar la consistencia de la cobertura.",
+    "4. Desechar el envoltorio en el contenedor adecuado de reciclaje."
+  ],
+  "troubleshooting_codes": {
+    "Cobertura reblandecida": "Exposición a temperatura superior a 24°C; enfriar 10 minutos para recuperar firmeza.",
+    "Capa blanquecina en chocolate (Fat bloom)": "Cristalización de manteca por variación térmica; perfectamente apto para consumo.",
+    "Empaque perforado o inflado": "Pérdida de hermeticidad en transporte; no consumir y contactar con el proveedor."
+  },
+  "manual_source": "Ficha Técnica Nutricional (Catálogo Adaptado)",
+  "raw_text_summary": "Suplemento proteico BIOPROX 3 Protein Bar - Chocolate Dubai. Ficha generada con parámetros de nutrición y conservación."
+}

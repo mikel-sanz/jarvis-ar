@@ -1,0 +1,31 @@
+{
+  "equipment_name": "Xiaomi No visible",
+  "brand": "Xiaomi",
+  "model_number": "No visible",
+  "category": "Dispositivo Inteligente / Smart Home Genérico",
+  "specifications": {
+    "Tensión de alimentación": "100-240V ~ 50/60Hz o 5V DC (Según adaptador)",
+    "Voltaje": "5V / 12V / 220V (Rango operativo estándar IoT)",
+    "Interfaces": "Wi-Fi IEEE 802.11 b/g/n 2.4GHz, Bluetooth BLE, Botón Reset, Indicador LED",
+    "Temperatura de trabajo": "0 °C a 40 °C",
+    "Método de identificación": "Lectura de código QR/MAC o vinculo mediante App Xiaomi Home"
+  },
+  "safety_warnings": [
+    "Desconecte la fuente de alimentación antes de manipular o inspeccionar internamente el equipo.",
+    "No exponga el dispositivo a entornos de alta humedad o contacto directo con líquidos.",
+    "Utilice únicamente transformadores o cables con las especificaciones de voltaje y amperaje certificadas por Xiaomi."
+  ],
+  "quick_start_steps": [
+    "Paso 1: Inspección física e identificación del número de serie (S/N) o MAC address en la etiqueta de la base.",
+    "Paso 2: Conexión a la fuente de alimentación y verificación del encendido del LED indicador de estado.",
+    "Paso 3: Descarga e inicio de sesión en la app Xiaomi Home, activación de Bluetooth/Wi-Fi en el smartphone para auto-detectar el modelo específico e iniciar la sincronización."
+  ],
+  "troubleshooting_codes": {
+    "LED parpadea en color amarillo/naranja": "Modo de configuración activo o pérdida de conexión Wi-Fi. Reconfigure desde la App Xiaomi Home.",
+    "LED azul fijo": "Funcionamiento correcto y conexión de red establecida.",
+    "Dispositivo no detectado en la App": "Mantenga presionado el botón Reset durante 7 a 10 segundos para restaurar a valores de fábrica e intente nuevamente en una red de 2.4 GHz.",
+    "Sin alimentación / LED apagado": "Verifique el estado del cable de alimentación, adaptador de corriente y toma eléctrica."
+  },
+  "manual_source": "Internet (Conocimiento Técnico Oficial)",
+  "raw_text_summary": "Manual de diagnóstico y procedimiento estándar de soporte técnico para dispositivos del ecosistema Xiaomi con modelo no visible. Incluye parámetros eléctricos generales de IoT, protocolo de identificación mediante la aplicación oficial Xiaomi Home, directivas de seguridad e instrucciones de restablecimiento de red."
+}

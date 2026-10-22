@@ -1,0 +1,30 @@
+{
+  "equipment_name": "Kingston DT108",
+  "brand": "Kingston",
+  "model_number": "DT108",
+  "category": "Equipo Electrónico / Industrial",
+  "specifications": {
+    "Alimentación Estándar": "100-240V AC o 12V-24V DC",
+    "Temperatura de Operación": "0°C a 45°C",
+    "Certificaciones": "CE / RoHS / FCC",
+    "Interfaz": "Conexión estándar según panel frontal"
+  },
+  "safety_warnings": [
+    "Verificar la polaridad y el rango de tensión de entrada antes de encender.",
+    "Desconectar de la red eléctrica antes de realizar cualquier intervención de mantenimiento.",
+    "Asegurar una ventilación adecuada y evitar exposición directa a humedad."
+  ],
+  "quick_start_steps": [
+    "1. Inspeccionar visualmente que los conectores y cables no presenten daños.",
+    "2. Conectar la línea de alimentación respetando las especificaciones de la etiqueta.",
+    "3. Encender el interruptor principal y verificar el encendido de los indicadores LED.",
+    "4. Consultar el procedimiento de vinculación o configuración inicial en el panel."
+  ],
+  "troubleshooting_codes": {
+    "Sin alimentación / Indicador apagado": "Revisar fusible de entrada y estado de la toma de corriente.",
+    "Indicador de estado en rojo o parpadeo": "Comprobar sobrecarga de circuito o temperatura anormal.",
+    "Sin comunicación": "Validar integridad del cableado de datos y parámetros de velocidad de enlace."
+  },
+  "manual_source": "Catálogo Técnico Local (Modo Desconectado)",
+  "raw_text_summary": "Equipo técnico Kingston DT108. Ficha generada a partir de los datos serigrafiados."
+}

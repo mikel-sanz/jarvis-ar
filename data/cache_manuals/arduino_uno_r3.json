@@ -1,0 +1,33 @@
+{
+  "equipment_name": "Placa de Desarrollo Arduino UNO R3",
+  "brand": "Arduino",
+  "model_number": "UNO R3",
+  "category": "Microcontroladores / Embebidos",
+  "specifications": {
+    "Microcontrolador": "ATmega328P",
+    "Voltaje de Operación": "5V DC",
+    "Voltaje de Entrada Recomendado": "7V a 12V DC (Límite: 6V - 20V)",
+    "Pines I/O Digitales": "14 (6 salidas PWM)",
+    "Pines de Entrada Analógica": "6 (A0 a A5)",
+    "Memoria Flash": "32 KB (0.5 KB usados por bootloader)",
+    "Velocidad de Reloj": "16 MHz"
+  },
+  "safety_warnings": [
+    "No suministrar más de 5.5V directamente en el pin 5V (daño irreversible al microcontrolador).",
+    "La corriente máxima por pin de I/O no debe exceder los 40 mA (recomendado 20 mA).",
+    "Aislar la parte inferior de la placa para evitar cortocircuitos sobre superficies metálicas."
+  ],
+  "quick_start_steps": [
+    "1. Conectar al PC mediante cable USB tipo B (el LED 'ON' debe encenderse en verde).",
+    "2. En el IDE de Arduino, seleccionar 'Herramientas > Placa > Arduino Uno'.",
+    "3. Seleccionar el puerto COM asignado en 'Herramientas > Puerto'.",
+    "4. Cargar el sketch de prueba 'Blink' desde 'Archivo > Ejemplos > 01.Basics'."
+  ],
+  "troubleshooting_codes": {
+    "avrdude stk500_recv(): not in sync": "El puerto COM no es el correcto o el cable USB está dañado.",
+    "LED 'L' parpadea rápidamente sin cargar código": "Comprobar conexiones en pines 0 (RX) y 1 (TX); desconectarlos durante la subida.",
+    "Regulador de voltaje se calienta en exceso": "Voltaje de entrada en jack de barril superior a 15V o cortocircuito en línea de 5V."
+  },
+  "manual_source": "Catálogo Técnico Local Autónomo",
+  "raw_text_summary": "Placa electrónica basada en el microcontrolador ATmega328P para prototipado rápido de sistemas interactivos."
+}

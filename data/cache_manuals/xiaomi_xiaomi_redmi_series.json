@@ -1,0 +1,35 @@
+{
+  "equipment_name": "Smartphone Xiaomi Series (HyperOS / Android)",
+  "brand": "Xiaomi",
+  "model_number": "Xiaomi / Redmi Series",
+  "category": "Dispositivos Móviles / Comunicaciones",
+  "specifications": {
+    "Fabricante": "Xiaomi Communications Co., Ltd.",
+    "Sistema Operativo": "Xiaomi HyperOS (basado en Android)",
+    "Pantalla": "AMOLED FHD+ / CrystalRes 120Hz",
+    "Batería": "5000 mAh Li-Po integrada",
+    "Carga Rápida": "HyperCharge 67W / 120W (Conector USB Tipo-C)",
+    "Conectividad": "5G Dual SIM, Wi-Fi 6, Bluetooth 5.4, NFC, Sensor Infrarrojos",
+    "Identificador Serial / QR": "Registrado en etiqueta adhesiva posterior del chasis"
+  },
+  "safety_warnings": [
+    "Utilizar exclusivamente cargadores y cables certificados Xiaomi HyperCharge para evitar degradación prematura.",
+    "No someter la batería interna a temperaturas superiores a 45°C ni perforar la tapa posterior.",
+    "Evitar sumergir en agua si el dispositivo presenta grietas en el chasis o módulo de cámaras."
+  ],
+  "quick_start_steps": [
+    "1. Encendido: Mantener presionado el botón lateral de encendido durante 3 segundos hasta vibrar.",
+    "2. Forzar Reinicio en caso de bloqueo: Presionar [Botón Encendido + Bajar Volumen] durante 10 segundos continuos.",
+    "3. Entrar en Modo Recovery Oficial: Con el teléfono apagado, presionar [Botón Encendido + Subir Volumen] hasta ver el logotipo Mi/Xiaomi.",
+    "4. Entrar en Modo Fastboot: Con el teléfono apagado, presionar [Botón Encendido + Bajar Volumen] hasta ver el androide Fastboot.",
+    "5. Transferencia de Datos: Conectar vía cable USB-C al PC y seleccionar 'Transferencia de archivos (MTP)' en la barra de notificaciones."
+  ],
+  "troubleshooting_codes": {
+    "Bucle de reinicio (Bootloop) en pantalla de logo": "Acceder a Recovery (Encendido + Subir Vol) y seleccionar 'Reboot to System' o 'Wipe Data'.",
+    "Carga lenta / no detecta carga rápida": "Comprobar cargador original de 67W/120W y limpiar posibles residuos de polvo en el puerto USB-C.",
+    "Calentamiento temporal durante carga o cámara": "Normal durante carga rápida de 67W/120W; retirar fundas térmicas si supera los 42°C.",
+    "Sensor de huella en pantalla no responde": "Volver a registrar la huella en Ajustes > Contraseñas y Seguridad con el dedo limpio."
+  },
+  "manual_source": "Catálogo Oficial Xiaomi (Modo Autónomo Local)",
+  "raw_text_summary": "Dispositivo móvil inteligente de alto rendimiento con arquitectura multicámara y sistema Xiaomi HyperOS."
+}

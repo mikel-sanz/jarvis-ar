@@ -1,0 +1,32 @@
+{
+  "equipment_name": "Multímetro Digital Industrial Fluke 87V",
+  "brand": "Fluke",
+  "model_number": "Fluke 87V Industrial",
+  "category": "Instrumentación & Medida Eléctrica",
+  "specifications": {
+    "Rango Voltaje AC/DC": "Hasta 1000V con precisión del 0.05%",
+    "Rango Corriente AC/DC": "Hasta 10A continua (20A durante 30 segundos)",
+    "Filtro Pasa-bajos": "Función especializada para variadores de frecuencia (VFD)",
+    "Categoría de Seguridad": "CAT III 1000V / CAT IV 600V",
+    "Batería": "Pila de 9V alcalina (duración típica: 400 horas)",
+    "Pantalla": "4-1/2 dígitos con retroiluminación de dos niveles"
+  },
+  "safety_warnings": [
+    "Comprobar siempre las puntas de prueba antes de medir alta tensión (revisar continuidad).",
+    "Nunca cambiar el selector de escala mientras las sondas estén conectadas a un circuito con energía.",
+    "Utilizar únicamente fusibles de repuesto certificados de acción rápida (Fluke 11A / 440mA 1000V)."
+  ],
+  "quick_start_steps": [
+    "1. Insertar la sonda negra en el conector 'COM' y la roja en 'V/Ω' para medir voltaje o resistencia.",
+    "2. Girar el selector a la magnitud deseada (V AC con onda senoidal, o V DC con barra continua).",
+    "3. Para medir motores con variador, presionar el botón amarillo para activar el filtro pasa-bajos.",
+    "4. Para congelar una medición en pantalla, presionar el botón 'AutoHOLD'."
+  ],
+  "troubleshooting_codes": {
+    "Pantalla muestra 'bAtt'": "Nivel de batería inferior al 10%; sustituir la pila de 9V en el compartimento posterior.",
+    "Lectura en circuito abierto no marca 'OL'": "Puntas de prueba dañadas o fusibles de corriente fundidos.",
+    "No mide amperios (lectura 0.00A con carga)": "Fusible de protección de corriente fundido; abrir tapa y reemplazar fusible cerámico."
+  },
+  "manual_source": "Catálogo Técnico Local Autónomo",
+  "raw_text_summary": "Instrumento de precisión diseñado para diagnóstico eléctrico industrial en entornos con ruido electromagnético severo."
+}

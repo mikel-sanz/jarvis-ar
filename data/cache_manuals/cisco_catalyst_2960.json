@@ -1,0 +1,32 @@
+{
+  "equipment_name": "Switch Gestionable Cisco Catalyst 2960 Series",
+  "brand": "Cisco Systems",
+  "model_number": "Catalyst 2960-X / 24TS-L",
+  "category": "Equipamiento de Redes / Telecomunicaciones",
+  "specifications": {
+    "Puertos": "24 puertos Gigabit Ethernet 10/100/1000 + 4 enlaces SFP 1G",
+    "Capacidad de Conmutación": "216 Gbps",
+    "Tasa de Reenvío": "71.4 Mpps",
+    "Alimentación": "100-240V AC, 50-60Hz (Consumo típico: 35W)",
+    "Sistema Operativo": "Cisco IOS LAN Base",
+    "Puertos de Gestión": "1 puerto RJ-45 Consola + 1 puerto USB mini-B"
+  },
+  "safety_warnings": [
+    "Riesgo de descarga eléctrica: Conectar obligatoriamente a toma con conexión a tierra física.",
+    "Mantener libres las rejillas laterales de ventilación; no obstruir el flujo de aire en rack.",
+    "No mirar directamente a los puertos de fibra óptica SFP activos (emisión láser clase 1)."
+  ],
+  "quick_start_steps": [
+    "1. Montar en rack de 19 pulgadas utilizando los soportes laterales provistos.",
+    "2. Conectar el cable de alimentación AC (el LED 'SYST' parpadeará en ámbar y luego verde).",
+    "3. Conectar cable de consola RJ-45 a 9600 baudios, 8 bits de datos, sin paridad, 1 bit de parada.",
+    "4. Iniciar asistente de configuración inicial 'setup' o acceder vía CLI con enable."
+  ],
+  "troubleshooting_codes": {
+    "LED 'SYST' en ámbar continuo": "Fallo en autoprueba de encendido (POST); comprobar módulos internos o reiniciar.",
+    "LED de puerto parpadea en ámbar": "Bucle de red detectado (Spanning Tree bloqueando puerto) o error de duplex/velocidad.",
+    "Sin acceso a consola": "Comprobar velocidad de emulador a 9600 baudios y flujo de control en 'None'."
+  },
+  "manual_source": "Catálogo Técnico Local Autónomo",
+  "raw_text_summary": "Switch de capa 2 de clase empresarial para conectividad de campus y sucursales con seguridad avanzada."
+}

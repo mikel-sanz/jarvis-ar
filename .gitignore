@@ -1,0 +1,32 @@
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache y bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Variables de entorno y secretos
+.env
+*.local
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Cobertura y reportes
+.coverage
+htmlcov/
+.nexo_temp/
+
+# Binarios y descargas temporales
+bin/
+*.exe
+qr_mobile.png
