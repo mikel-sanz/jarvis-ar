@@ -215,7 +215,10 @@ def render_ar_dashboard(
                     analysis.targets,
                     theme=hud_theme
                 )
-                st.components.v1.html(interactive_html, height=580, scrolling=False)
+                img_h, img_w = orig_rgb.shape[:2]
+                aspect_ratio = img_h / max(1, img_w)
+                hud_frame_height = min(780, max(560, int(560 * aspect_ratio))) if aspect_ratio > 1.15 else 580
+                st.components.v1.html(interactive_html, height=hud_frame_height, scrolling=False)
 
                 # Desglose rápido por componentes detectados
                 all_hotspots = [h for t in analysis.targets for h in t.hotspots]

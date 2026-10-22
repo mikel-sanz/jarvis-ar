@@ -28,29 +28,29 @@ from src.vision_ai import ARHotspot, ARTarget
 HUD_COLORS = {
     "CYAN": {
         "primary": "#00f0ff",
-        "glow": "rgba(0, 240, 255, 0.4)",
-        "card_bg": "rgba(6, 18, 36, 0.94)",
+        "glow": "rgba(0, 240, 255, 0.45)",
+        "card_bg": "rgba(6, 18, 36, 0.95)",
         "border": "#00f0ff",
         "accent": "#00ffee"
     },
     "GREEN": {
         "primary": "#00ff66",
-        "glow": "rgba(0, 255, 102, 0.4)",
-        "card_bg": "rgba(6, 30, 18, 0.94)",
+        "glow": "rgba(0, 255, 102, 0.45)",
+        "card_bg": "rgba(6, 30, 18, 0.95)",
         "border": "#00ff66",
         "accent": "#66ff99"
     },
     "AMBER": {
         "primary": "#ffaa00",
-        "glow": "rgba(255, 170, 0, 0.4)",
-        "card_bg": "rgba(36, 24, 6, 0.94)",
+        "glow": "rgba(255, 170, 0, 0.45)",
+        "card_bg": "rgba(36, 24, 6, 0.95)",
         "border": "#ffaa00",
         "accent": "#ffcc44"
     },
     "RED": {
         "primary": "#ff3366",
-        "glow": "rgba(255, 51, 102, 0.4)",
-        "card_bg": "rgba(36, 6, 12, 0.94)",
+        "glow": "rgba(255, 51, 102, 0.45)",
+        "card_bg": "rgba(36, 6, 12, 0.95)",
         "border": "#ff3366",
         "accent": "#ff6688"
     }
@@ -97,7 +97,7 @@ def calculate_layout_hotspots(
         else:
             right_group.append((idx, hs))
 
-    # Si un grupo tiene todos y el otro ninguno, equilibrar para estética y distribución
+    # Si un grupo tiene todos y el otro ninguno, equilibrar para distribución armónica
     if len(left_group) == 0 and len(right_group) > 3:
         sorted_by_x = sorted(right_group, key=lambda item: item[1].x_percent)
         half = len(sorted_by_x) // 2
@@ -221,6 +221,7 @@ def build_interactive_hud_html(
     svg_lines_list: List[str] = []
     hotspots_html_list: List[str] = []
     cards_html_list: List[str] = []
+    rack_items_html_list: List[str] = []
 
     for item in layout_items:
         hs = item.hotspot
@@ -234,12 +235,12 @@ def build_interactive_hud_html(
         ax, ay = item.anchor_x, item.anchor_y
         bx, by = item.beacon_x, item.beacon_y
 
-        # Elementos SVG: Punto exacto (Anchor) y Línea de llamada (Leader Line)
+        # Elementos SVG: Punto exacto (Anchor) con halo respirable y Línea de llamada (Leader Line)
         svg_lines_list.append(
             f"""
             <g class="hud-leader-group" id="leader-{hs_id}">
-                <circle class="hud-anchor-dot" cx="{ax:.2f}" cy="{ay:.2f}" r="0.9" />
-                <circle class="hud-anchor-pulse" cx="{ax:.2f}" cy="{ay:.2f}" r="1.8" />
+                <circle class="hud-anchor-dot" cx="{ax:.2f}" cy="{ay:.2f}" r="1.1" />
+                <circle class="hud-anchor-pulse" cx="{ax:.2f}" cy="{ay:.2f}" r="2.2" />
                 <line class="hud-leader-line"
                       id="line-{hs_id}"
                       x1="{ax:.2f}" y1="{ay:.2f}"
@@ -248,7 +249,7 @@ def build_interactive_hud_html(
             """
         )
 
-        # Pin circular con radar pulsante situado en columna lateral, con soporte de arrastre
+        # Pin circular compacto SIN etiqueta superpuesta que tape el equipo (arrastrable)
         hotspots_html_list.append(
             f"""
             <div class="hud-hotspot-beacon"
@@ -258,10 +259,23 @@ def build_interactive_hud_html(
                  onclick="handleBeaconClick('{hs_id}')"
                  onmouseenter="hoverHotspot('{hs_id}', true)"
                  onmouseleave="hoverHotspot('{hs_id}', false)"
-                 title="{hs_name} (Arrastra para mover)">
+                 title="#{item.index}: {hs_name} (Arrastra para mover)">
                 <div class="radar-pulse"></div>
                 <div class="beacon-core">{item.index}</div>
-                <div class="beacon-tag">{hs_name}</div>
+            </div>
+            """
+        )
+
+        # Elemento del panel/rack de inspección inferior
+        rack_items_html_list.append(
+            f"""
+            <div class="hud-rack-pill"
+                 id="pill-{hs_id}"
+                 onclick="toggleHotspot('{hs_id}')"
+                 onmouseenter="hoverHotspot('{hs_id}', true)"
+                 onmouseleave="hoverHotspot('{hs_id}', false)">
+                <span class="pill-num">#{item.index}</span>
+                <span class="pill-name">{hs_name}</span>
             </div>
             """
         )
@@ -290,6 +304,7 @@ def build_interactive_hud_html(
     svg_markup = "\n".join(svg_lines_list)
     hotspots_markup = "\n".join(hotspots_html_list)
     cards_markup = "\n".join(cards_html_list)
+    rack_markup = "\n".join(rack_items_html_list)
     total_count = len(hotspots)
 
     return f"""<!DOCTYPE html>
@@ -313,7 +328,7 @@ def build_interactive_hud_html(
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 8px;
+            padding: 4px;
         }}
         .hud-wrapper {{
             position: relative;
@@ -324,16 +339,18 @@ def build_interactive_hud_html(
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 0 20px {p_glow};
+            display: flex;
+            flex-direction: column;
         }}
         .hud-status-bar {{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 14px;
+            padding: 8px 12px;
             background: rgba(10, 16, 28, 0.95);
             border-bottom: 1px solid rgba(0, 240, 255, 0.2);
             font-size: 11px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
             color: {p_color};
             font-weight: 600;
@@ -367,7 +384,7 @@ def build_interactive_hud_html(
         .hud-bg-image {{
             width: 100%;
             height: auto;
-            max-height: 520px;
+            max-height: 540px;
             object-fit: contain;
             display: block;
         }}
@@ -392,45 +409,45 @@ def build_interactive_hud_html(
         }}
         .hud-anchor-dot {{
             fill: {p_color};
-            filter: drop-shadow(0 0 2px {p_color});
+            filter: drop-shadow(0 0 3px {p_color});
         }}
         .hud-anchor-pulse {{
             fill: none;
             stroke: {p_color};
-            stroke-width: 0.35;
-            opacity: 0.8;
+            stroke-width: 0.45;
+            opacity: 0.85;
             animation: anchor-breathe 2s infinite ease-in-out;
         }}
         @keyframes anchor-breathe {{
-            0%, 100% {{ opacity: 0.4; r: 1.4; }}
-            50% {{ opacity: 1; r: 2.2; }}
+            0%, 100% {{ opacity: 0.4; r: 1.8; }}
+            50% {{ opacity: 1; r: 2.8; }}
         }}
         .hud-leader-line {{
             stroke: {p_color};
-            stroke-width: 0.45;
-            stroke-dasharray: 1.2 0.8;
-            opacity: 0.75;
+            stroke-width: 0.55;
+            stroke-dasharray: 1.5 1.0;
+            opacity: 0.80;
             transition: stroke 0.2s ease, stroke-width 0.2s ease;
         }}
         .hud-leader-group.active .hud-leader-line {{
             stroke: #ffffff;
-            stroke-width: 0.85;
+            stroke-width: 1.1;
             stroke-dasharray: none;
             opacity: 1;
             filter: drop-shadow(0 0 4px {p_color});
         }}
         .hud-leader-group.active .hud-anchor-dot {{
             fill: #ffffff;
-            filter: drop-shadow(0 0 4px #ffffff);
+            filter: drop-shadow(0 0 5px #ffffff);
         }}
-        /* PIN INTERACTIVO / BEACON ARRASTRABLE */
+        /* PIN INTERACTIVO / BEACON COMPACTO Y ARRASTRABLE */
         .hud-hotspot-beacon {{
             position: absolute;
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             transform: translate(-50%, -50%);
             cursor: grab;
-            z-index: 10;
+            z-index: 15;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -439,12 +456,12 @@ def build_interactive_hud_html(
         }}
         .hud-hotspot-beacon:active, .hud-hotspot-beacon.dragging {{
             cursor: grabbing;
-            transform: translate(-50%, -50%) scale(1.35);
+            transform: translate(-50%, -50%) scale(1.4);
             z-index: 50;
         }}
         .hud-hotspot-beacon:hover, .hud-hotspot-beacon.active {{
-            transform: translate(-50%, -50%) scale(1.28);
-            z-index: 25;
+            transform: translate(-50%, -50%) scale(1.3);
+            z-index: 30;
         }}
         .beacon-core {{
             width: 22px;
@@ -457,14 +474,14 @@ def build_interactive_hud_html(
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 12px {p_color};
+            box-shadow: 0 0 10px {p_color};
             border: 2px solid #ffffff;
             z-index: 2;
         }}
         .radar-pulse {{
             position: absolute;
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             border: 2px solid {p_color};
             animation: pulse-ring 1.8s infinite ease-out;
@@ -474,21 +491,50 @@ def build_interactive_hud_html(
             0% {{ transform: scale(0.6); opacity: 1; }}
             100% {{ transform: scale(1.6); opacity: 0; }}
         }}
-        .beacon-tag {{
-            position: absolute;
-            top: 28px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(7, 10, 18, 0.90);
-            border: 1px solid {p_border};
-            color: #ffffff;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
+        /* RACK DE PUNTOS INFERIOR (CERO OBSTRUCCIÓN) */
+        .hud-rack-container {{
+            display: flex;
+            gap: 6px;
+            padding: 8px 10px;
+            background: rgba(10, 16, 28, 0.95);
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+            overflow-x: auto;
             white-space: nowrap;
-            pointer-events: none;
-            opacity: 0.9;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            -webkit-overflow-scrolling: touch;
+        }}
+        .hud-rack-pill {{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 16px;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 11px;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }}
+        .hud-rack-pill:hover, .hud-rack-pill.active {{
+            background: {p_color};
+            color: #07090e;
+            border-color: #ffffff;
+            box-shadow: 0 0 8px {p_color};
+        }}
+        .hud-rack-pill:hover .pill-num, .hud-rack-pill.active .pill-num {{
+            background: #07090e;
+            color: #ffffff;
+        }}
+        .pill-num {{
+            background: {p_color};
+            color: #07090e;
+            font-weight: 800;
+            border-radius: 10px;
+            padding: 1px 5px;
+            font-size: 10px;
+        }}
+        .pill-name {{
+            font-weight: 600;
         }}
         /* TARJETA DE INSPECCIÓN FLOTANTE */
         .hud-inspect-card {{
@@ -592,10 +638,14 @@ def build_interactive_hud_html(
             <svg class="hud-lines-svg" id="svg-layer" viewBox="0 0 100 100" preserveAspectRatio="none">
                 {svg_markup}
             </svg>
-            <!-- BOTONES TÁCTILES EN COLUMNAS LATERALES (ARRASTRABLES) -->
+            <!-- BOTONES COMPACTOS EN COLUMNAS LATERALES (ARRASTRABLES) -->
             {hotspots_markup}
             <!-- TARJETAS HOLOGRÁFICAS EMERGENTES -->
             {cards_markup}
+        </div>
+        <!-- RACK DE ACCESO INFERIOR PARA MÓVILES -->
+        <div class="hud-rack-container" id="rack-container">
+            {rack_markup}
         </div>
     </div>
 
@@ -686,12 +736,14 @@ def build_interactive_hud_html(
             document.querySelectorAll('.hud-inspect-card').forEach(c => c.style.display = 'none');
             document.querySelectorAll('.hud-hotspot-beacon').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.hud-leader-group').forEach(g => g.classList.remove('active'));
+            document.querySelectorAll('.hud-rack-pill').forEach(p => p.classList.remove('active'));
         }}
 
         function toggleHotspot(id) {{
             const card = document.getElementById('card-' + id);
             const beacon = document.getElementById('beacon-' + id);
             const leader = document.getElementById('leader-' + id);
+            const pill = document.getElementById('pill-' + id);
             if (!card || !beacon) return;
 
             const isCurrentlyOpen = (card.style.display === 'block');
@@ -701,6 +753,10 @@ def build_interactive_hud_html(
                 card.style.display = 'block';
                 beacon.classList.add('active');
                 if (leader) leader.classList.add('active');
+                if (pill) {{
+                    pill.classList.add('active');
+                    pill.scrollIntoView({{ behavior: 'smooth', block: 'nearest', inline: 'center' }});
+                }}
             }}
         }}
 
@@ -708,15 +764,17 @@ def build_interactive_hud_html(
             if (currentDrag) return;
             const card = document.getElementById('card-' + id);
             const leader = document.getElementById('leader-' + id);
+            const pill = document.getElementById('pill-' + id);
             if (!leader) return;
 
-            // Si la tarjeta ya está abierta por clic, mantener activo
             if (card && card.style.display === 'block') return;
 
             if (isHovering) {{
                 leader.classList.add('active');
+                if (pill) pill.classList.add('active');
             }} else {{
                 leader.classList.remove('active');
+                if (pill) pill.classList.remove('active');
             }}
         }}
 
@@ -733,7 +791,10 @@ def build_interactive_hud_html(
         }}
 
         function handleViewportClick(event) {{
-            if (!event.target.closest('.hud-hotspot-beacon') && !event.target.closest('.hud-inspect-card') && !event.target.closest('.hud-btn-toggle')) {{
+            if (!event.target.closest('.hud-hotspot-beacon') && 
+                !event.target.closest('.hud-inspect-card') && 
+                !event.target.closest('.hud-btn-toggle') && 
+                !event.target.closest('.hud-rack-pill')) {{
                 closeAllCards();
             }}
         }}
