@@ -60,8 +60,8 @@ class AppSettings(BaseModel):
         description="Umbral de confianza mínimo para renderizar elementos AR."
     )
     public_tunnel_url: Optional[str] = Field(
-        default="https://projects-viruses-killing-issues.trycloudflare.com",
-        description="URL pública HTTPS del túnel de acceso remoto."
+        default="https://jarvis-ar.streamlit.app",
+        description="URL pública HTTPS de acceso remoto (Streamlit Cloud o túnel)."
     )
     root_dir: Path = Field(
         default=ROOT_DIR,
@@ -90,7 +90,7 @@ def get_settings() -> AppSettings:
         conf_str: str = os.getenv("AR_CONFIDENCE_THRESHOLD", "0.5")
         tunnel_url: Optional[str] = os.getenv(
             "CLOUDFLARE_TUNNEL_URL",
-            "https://projects-viruses-killing-issues.trycloudflare.com"
+            os.getenv("STREAMLIT_APP_URL", "https://jarvis-ar.streamlit.app")
         )
 
         return AppSettings(

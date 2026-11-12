@@ -1,10 +1,41 @@
-# 👁️ Jarvis AR — Sistema de Fusión: Realidad Aumentada + Inteligencia Artificial
+# 👁️ Jarvis AR — Asistente Espacial: Realidad Aumentada + IA Multimodal
 
-[![NEXO Framework](https://img.shields.io/badge/NEXO-v2.3_Certified-00f0ff.svg)](file:///c:/Users/User/Documents/Realidad_AI/.nexo_status.json)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://jarvis-ar.streamlit.app)
+[![NEXO Framework](https://img.shields.io/badge/NEXO-v2.3_Certified-00f0ff.svg)](.nexo_status.json)
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
-[![Architecture](https://img.shields.io/badge/Architecture-Mobile--First-green.svg)](file:///c:/Users/User/Documents/Realidad_AI/architecture-map.md)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-**Jarvis AR** es una plataforma de inteligencia espacial que combina **Realidad Aumentada (AR)** e **Inteligencia Artificial Multimodal (AI)**. Permite apuntar con la cámara de un teléfono inteligente o PC hacia cualquier objeto del entorno para desplegar en tiempo real retículas holográficas, diagnósticos técnicos y tarjetas interactivas de ayuda paso a paso.
+**Jarvis AR** es una plataforma de inteligencia espacial y mantenimiento aumentada que combina **Realidad Aumentada (AR)** con **Visión por Computador e Inteligencia Artificial Multimodal (Gemini Flash)**. Permite apuntar con la cámara de cualquier teléfono inteligente o PC hacia equipos industriales o de consumo para desplegar en tiempo real retículas holográficas, diagnósticos técnicos y tarjetas interactivas de inspección técnica paso a paso.
+
+---
+
+## 📱 Acceso Rápido desde Cualquier Teléfono Móvil
+
+> [!TIP]
+> **No necesitas tener el ordenador encendido ni estar en la misma red Wi-Fi.** La aplicación se ejecuta de forma autónoma en la nube (Streamlit Community Cloud) con protocolo seguro HTTPS, permitiendo el uso de la cámara en Android y iPhone desde cualquier lugar y red de datos (4G/5G/Wi-Fi).
+
+<div align="center">
+
+### ⚡ Escanea este código QR con tu móvil:
+
+<a href="https://jarvis-ar.streamlit.app">
+  <img src="assets/qr_app.png" alt="Código QR Jarvis AR" width="220" />
+</a>
+
+👉 **Acceso directo vía web:** **[https://jarvis-ar.streamlit.app](https://jarvis-ar.streamlit.app)**
+
+</div>
+
+---
+
+## ✨ Características Principales
+
+- **Hotspots Interactivos con Líneas de Llamada SVG (Leader Lines):** Distribución ordenada en columnas laterales para evitar el solapamiento visual y dejar el equipo central totalmente visible.
+- **Arrastre Táctil Libre (Drag & Drop):** Posibilidad de reubicar cualquier pin de inspección directamente con el dedo sobre la pantalla táctil para despejar referencias físicas.
+- **Acceso Multi-Dispositivo Autónomo:** Funciona en cualquier navegador moderno sin requerir instalación de apps nativas.
+- **Doble Motor de Inferencia:**
+  - **Modo Cloud Multimodal:** Reconocimiento instantáneo de marcas, modelos y serigrafías con Google Gemini Vision.
+  - **Modo Local Offline:** Catálogo técnico integrado y algoritmos de visión artificial determinista.
 
 ---
 
@@ -19,8 +50,12 @@
 
 ---
 
-## 📱 ¿Cómo usarlo desde el Teléfono Móvil?
+## 🚀 Opciones de Uso: Nube vs Local
 
+### Opción 1: En la Nube 24/7 (Sin Ordenador ni Instalación)
+Escanea el código QR superior desde cualquier smartphone o entra directamente a **[https://jarvis-ar.streamlit.app](https://jarvis-ar.streamlit.app)**. La aplicación se ejecuta de forma autónoma en servidores cloud sin requerir que tengas el PC encendido ni estar en la misma red Wi-Fi.
+
+### Opción 2: Ejecución Local en tu Ordenador (Modo Desarrollo / Offline)
 1. Conecta tu teléfono a la **misma red Wi-Fi** que tu ordenador.
 2. Inicia la aplicación en el ordenador (ver sección [Inicio Rápido](#-inicio-rápido)).
 3. En la consola del servidor o en la barra lateral de la aplicación, verás tu dirección IP local:

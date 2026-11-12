@@ -425,14 +425,18 @@ def main() -> None:
 
         st.divider()
 
-        local_ip: str = get_local_ip()
+        # Determinar URL pública del móvil priorizando Streamlit Cloud o Túnel
         mobile_url: str = settings.public_tunnel_url or f"http://{local_ip}:{settings.server_port}"
+        # Soporte para despliegue en Streamlit Community Cloud
+        if "STREAMLIT_APP_URL" in os.environ:
+            mobile_url = os.environ["STREAMLIT_APP_URL"]
+
         qr_image_url: str = f"https://api.qrserver.com/v1/create-qr-code/?size=250x250&data={mobile_url}"
 
         st.markdown("### 📱 **Conectar Teléfono Móvil**")
-        st.image(qr_image_url, caption="Escanea el QR con tu móvil", width="stretch")
-        st.markdown(f"**Enlace Web:** [{mobile_url}]({mobile_url})")
-        st.caption("Protocolo HTTPS cifrado: permite usar la cámara de tu smartphone sin restricciones.")
+        st.image(qr_image_url, caption=f"Escanea para abrir {mobile_url}", width="stretch")
+        st.markdown(f"**Enlace Web Directo:** [{mobile_url}]({mobile_url})")
+        st.caption("Protocolo HTTPS cifrado: permite usar la cámara de tu smartphone sin restricciones desde cualquier lugar y red.")
 
     # Inicialización de motores con la clave activa
     vision_engine = VisionEngine(api_key=effective_key)
@@ -453,7 +457,8 @@ def main() -> None:
             st.markdown("#### ⚡ Conexión Instantánea Móvil")
             st.markdown(f"- **Enlace HTTPS Directo:** [{mobile_url}]({mobile_url})")
             st.markdown("- **Cámara Habilitada:** Protocolo SSL/HTTPS que habilita el sensor de cámara en Android y iPhone.")
-            st.markdown("- **IA Multimodal:** Clave API cargada en el servidor (gemini-3.8-flash).")
+            st.markdown("- **Acceso Autónomo:** Funciona desde cualquier red móvil (4G/5G/Wi-Fi) sin depender de tu ordenador.")
+            st.markdown("- **IA Multimodal:** Clave API cargada en Secrets o en `.env` (Gemini Flash).")
 
     if not effective_key:
         st.warning(
