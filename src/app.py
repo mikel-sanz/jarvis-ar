@@ -12,6 +12,7 @@ Ejemplo de ejecución:
 """
 
 import io
+import os
 from pathlib import Path
 import socket
 import sys
