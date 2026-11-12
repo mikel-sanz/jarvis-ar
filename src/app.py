@@ -14,12 +14,18 @@ Ejemplo de ejecución:
 import io
 from pathlib import Path
 import socket
+import sys
 import time
 from typing import Optional
 import cv2
 import numpy as np
 from PIL import Image, ImageOps
 import streamlit as st
+
+# Asegurar que la raíz del proyecto esté en sys.path para despliegues en la nube (Streamlit Community Cloud)
+ROOT_DIR: Path = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 # Soporte para formato HEIC de iPhones
 try:
@@ -36,7 +42,6 @@ from src.manual_engine import DeviceManual
 from src.vision_ai import SceneAnalysisResult, VisionEngine
 
 # Directorio de muestras visuales
-ROOT_DIR: Path = Path(__file__).resolve().parent.parent
 SAMPLES_DIR: Path = ROOT_DIR / "assets" / "samples"
 
 
